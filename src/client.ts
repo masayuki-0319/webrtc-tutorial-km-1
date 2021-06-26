@@ -1,4 +1,9 @@
-var connection = new WebSocket('ws://localhost:9090');
+const url_string = window.location.href;
+const url = new URL(url_string);
+const username = url.searchParams.get('username');
+alert(username);
+
+// var connection = new WebSocket('ws://localhost:9090');
 
 // connection.onopen = function () {
 //     console.log("Connected to the server");

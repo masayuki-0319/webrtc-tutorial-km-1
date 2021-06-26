@@ -1,5 +1,9 @@
 "use strict";
-var connection = new WebSocket('ws://localhost:9090');
+var url_string = window.location.href;
+var url = new URL(url_string);
+var username = url.searchParams.get('username');
+alert(username);
+// var connection = new WebSocket('ws://localhost:9090');
 // connection.onopen = function () {
 //     console.log("Connected to the server");
 // }
