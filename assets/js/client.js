@@ -2,7 +2,13 @@
 var url_string = window.location.href;
 var url = new URL(url_string);
 var username = url.searchParams.get('username');
-alert(username);
+var local_video = document.querySelector('#local-video');
+var reqiredMedia = { audio: true, video: true };
+navigator.getUserMedia(reqiredMedia, function (myStream) {
+    local_video.srcObject = myStream;
+}, function (error) {
+    console.error(error);
+});
 // var connection = new WebSocket('ws://localhost:9090');
 // connection.onopen = function () {
 //     console.log("Connected to the server");

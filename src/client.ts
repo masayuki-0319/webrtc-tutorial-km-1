@@ -1,7 +1,19 @@
 const url_string = window.location.href;
 const url = new URL(url_string);
 const username = url.searchParams.get('username');
-alert(username);
+
+const local_video = document.querySelector('#local-video') as HTMLVideoElement;
+
+const reqiredMedia = { audio: true, video: true };
+navigator.getUserMedia(
+  reqiredMedia,
+  (myStream) => {
+    local_video.srcObject = myStream;
+  },
+  (error) => {
+    console.error(error);
+  }
+);
 
 // var connection = new WebSocket('ws://localhost:9090');
 
