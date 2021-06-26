@@ -6,7 +6,7 @@
   "author": "masayuki-0319",
   "license": "MIT",
   "scripts": {
-    "start": "npx node-static dist"
+    "start": "tsc && npx node-static dist"
   },
   "dependencies": {
     "node-static": "^0.7.11",

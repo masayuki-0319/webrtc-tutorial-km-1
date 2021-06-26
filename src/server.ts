@@ -12,8 +12,6 @@ wss.on('connection', (conn) => {
   conn.on('close', (message) => {
     console.log('User Connection close...');
   });
-
-  conn.send('hello world');
 });
 
 const sendToOtherUser = (connection: ws, message: string) => {

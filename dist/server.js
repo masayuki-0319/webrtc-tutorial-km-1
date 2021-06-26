@@ -12,7 +12,7 @@ wss.on('connection', function (conn) {
     conn.on('close', function (message) {
         console.log('User Connection close...');
     });
-    conn.send('hello world');
+    conn.send('hello world ');
 });
 var sendToOtherUser = function (connection, message) {
     connection.send(JSON.stringify(message));
