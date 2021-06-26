@@ -1,9 +1,23 @@
+// MEMO: Listen WebSocket
+const connection = new WebSocket('ws://localhost:9090');
+connection.onopen = () => {
+  console.log('Connected to the server');
+};
+
+connection.onmessage = (msg) => {
+  const data = JSON.parse(msg.data);
+};
+connection.onerror = (error) => {
+  console.error(error);
+};
+
+// MEMO: Get username from URL
 const url_string = window.location.href;
 const url = new URL(url_string);
 const username = url.searchParams.get('username');
 
+// MEMO: Get UserMedia from Local User
 const local_video = document.querySelector('#local-video') as HTMLVideoElement;
-
 const reqiredMedia = { audio: true, video: true };
 navigator.getUserMedia(
   reqiredMedia,
@@ -14,12 +28,6 @@ navigator.getUserMedia(
     console.error(error);
   }
 );
-
-// var connection = new WebSocket('ws://localhost:9090');
-
-// connection.onopen = function () {
-//     console.log("Connected to the server");
-// }
 
 // var recordButton = document.querySelector("#start-recording");
 // var downloadButton = document.querySelector("#download-video");

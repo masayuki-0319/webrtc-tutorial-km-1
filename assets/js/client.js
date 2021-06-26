@@ -1,7 +1,20 @@
 "use strict";
+// MEMO: Listen WebSocket
+var connection = new WebSocket('ws://localhost:9090');
+connection.onopen = function () {
+    console.log('Connected to the server');
+};
+connection.onmessage = function (msg) {
+    var data = JSON.parse(msg.data);
+};
+connection.onerror = function (error) {
+    console.error(error);
+};
+// MEMO: Get username from URL
 var url_string = window.location.href;
 var url = new URL(url_string);
 var username = url.searchParams.get('username');
+// MEMO: Get UserMedia from Local User
 var local_video = document.querySelector('#local-video');
 var reqiredMedia = { audio: true, video: true };
 navigator.getUserMedia(reqiredMedia, function (myStream) {
@@ -9,10 +22,6 @@ navigator.getUserMedia(reqiredMedia, function (myStream) {
 }, function (error) {
     console.error(error);
 });
-// var connection = new WebSocket('ws://localhost:9090');
-// connection.onopen = function () {
-//     console.log("Connected to the server");
-// }
 // var recordButton = document.querySelector("#start-recording");
 // var downloadButton = document.querySelector("#download-video");
 // recordButton.addEventListener("click", () => {
