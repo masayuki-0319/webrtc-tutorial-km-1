@@ -1,10 +1,12 @@
-"use strict";
 var connection = new WebSocket('ws://localhost:9090');
+
 // connection.onopen = function () {
 //     console.log("Connected to the server");
 // }
+
 // var recordButton = document.querySelector("#start-recording");
 // var downloadButton = document.querySelector("#download-video");
+
 // recordButton.addEventListener("click", () => {
 //     if (recordButton.textContent === 'Start Recording') {
 //         startRecording();
@@ -29,12 +31,15 @@ var connection = new WebSocket('ws://localhost:9090');
 //         document.body.removeChild(a);
 //         window.URL.revokeObjectURL(url);
 //     }, 100);
+
 // })
+
 // function handleDataAvailable(event) {
 //     if (event.data && event.data.size > 0) {
 //         recordedBlobs.push(event.data)
 //     }
 // }
+
 // function startRecording() {
 //     recordedBlobs = []
 //     let options = {
@@ -68,6 +73,7 @@ var connection = new WebSocket('ws://localhost:9090');
 //     downloadButton.disabled = true;
 //     mediaRecorder.ondataavailable = handleDataAvailable;
 // }
+
 // function stopRecording() {
 //     mediaRecorder.stop();
 // }
@@ -86,33 +92,42 @@ var connection = new WebSocket('ws://localhost:9090');
 //                 acceptCall(data.name);
 //                 offerProcess(data.offer, data.name);
 //                 call_status.innerHTML = '<div class="call-status-wrap white-text"> <div class="calling-wrap"> <div class="calling-hang-action"> <div class="videocam-on"> <i class="material-icons teal darken-2 white-text video-toggle">videocam</i> </div> <div class="audio-on"> <i class="material-icons teal darken-2 white-text audio-toggle">mic</i> </div> <div class="call-cancel"> <i class="call-cancel-icon material-icons red darken-3 white-text">call</i> </div> </div> </div> </div>';
+
 //                 var video_toggle = document.querySelector('.videocam-on');
 //                 var audio_toggle = document.querySelector('.audio-on');
 //                 video_toggle.onclick = function () {
 //                     stream.getVideoTracks()[0].enabled = !(stream.getVideoTracks()[0].enabled);
+
 //                     var video_toggle_class = document.querySelector('.video-toggle');
 //                     if (video_toggle_class.innerText == 'videocam') {
 //                         video_toggle_class.innerText = 'videocam_off';
 //                     } else {
 //                         video_toggle_class.innerText = 'videocam';
 //                     }
+
 //                 }
+
 //                 audio_toggle.onclick = function () {
 //                     stream.getAudioTracks()[0].enabled = !(stream.getAudioTracks()[0].enabled);
+
 //                     var audio_toggle_class = document.querySelector('.audio-toggle');
 //                     if (video_toggle_class.innerText == 'mic') {
 //                         video_toggle_class.innerText = 'mic_off';
 //                     } else {
 //                         video_toggle_class.innerText = 'mic';
 //                     }
+
 //                 }
 //                 hangup();
+
 //             })
 //             call_reject.addEventListener("click", function () {
 //                 call_status.innerHTML = '';
 //                 alert('Call is rejected');
 //                 rejectedCall(data.name);
+
 //             })
+
 //             break;
 //         case "answer":
 //             answerProcess(data.answer);
@@ -142,6 +157,7 @@ var connection = new WebSocket('ws://localhost:9090');
 // var call_btn = document.querySelector("#call-btn");
 // var call_to_username_input = document.querySelector("#username-input");
 // var call_status = document.querySelector(".call-hang-status");
+
 // call_btn.addEventListener("click", function () {
 //     var call_to_username = call_to_username_input.value;
 //     call_status.innerHTML = '<div class="calling-status-wrap card black white-text"> <div class="user-image"> <img src="assets/images/other.jpg" class="caller-image circle" alt=""> </div> <div class="user-name">' + call_to_username + '</div> <div class="user-calling-status">Calling...</div> <div class="calling-action"> <div class="call-reject"><i class="material-icons red darken-3 white-text close-icon">close</i></div> </div> </div>';
@@ -150,9 +166,12 @@ var connection = new WebSocket('ws://localhost:9090');
 //         call_status.innerHTML = '';
 //         alert('Call is rejected');
 //         rejectedCall(call_to_username);
+
 //     })
+
 //     if (call_to_username.length > 0) {
 //         connected_user = call_to_username;
+
 //         myConn.createOffer(function (offer) {
 //             send({
 //                 type: "offer",
@@ -162,6 +181,7 @@ var connection = new WebSocket('ws://localhost:9090');
 //         }, function (error) {
 //             alert("Offer has not created");
 //         })
+
 //     }
 // })
 // var name;
@@ -171,8 +191,11 @@ var connection = new WebSocket('ws://localhost:9090');
 // var url_string = window.location.href;
 // var url = new URL(url_string);
 // var username = url.searchParams.get("username");
+
 // setTimeout(function () {
+
 //     if (connection.readyState === 1) {
+
 //         if (username != null) {
 //             name = username;
 //             if (name.length > 0) {
@@ -186,12 +209,14 @@ var connection = new WebSocket('ws://localhost:9090');
 //         console.log("Connection has not stublished");
 //     }
 // }, 3000)
+
 // function send(message) {
 //     if (connected_user) {
 //         message.name = connected_user;
 //     }
 //     connection.send(JSON.stringify(message))
 // }
+
 // function loginProcess(success) {
 //     if (success === false) {
 //         alert("Try a different username");
@@ -202,16 +227,19 @@ var connection = new WebSocket('ws://localhost:9090');
 //         }, function (myStream) {
 //             stream = myStream;
 //             local_video.srcObject = stream;
+
 //             var configuration = {
 //                 "iceServers": [{
 //                     "url": "stun:stun2.1.google.com:19302"
 //             }]
 //             }
+
 //             myConn = new webkitRTCPeerConnection(configuration, {
 //                 optional: [{
 //                     RtpDataChannels: true
 //         }]
 //             });
+
 //             dataChannel = myConn.createDataChannel("channel1", {
 //                 reliable: true
 //             })
@@ -224,14 +252,18 @@ var connection = new WebSocket('ws://localhost:9090');
 //             dataChannel.onclose = function () {
 //                 console.log("data channel is closed");
 //             }
+
 //             myConn.addStream(stream);
 //             myConn.onaddstream = function (e) {
 //                 remote_video.srcObject = e.stream;
+
 //                 call_status.innerHTML = '<div class="call-status-wrap white-text"> <div class="calling-wrap"> <div class="calling-hang-action"> <div class="videocam-on"> <i class="material-icons teal darken-2 white-text video-toggle">videocam</i> </div> <div class="audio-on"> <i class="material-icons teal darken-2 white-text audio-toggle">mic</i> </div> <div class="call-cancel"> <i class="call-cancel-icon material-icons red darken-3 white-text">call</i> </div> </div> </div> </div>';
+
 //                 var video_toggle = document.querySelector('.videocam-on');
 //                 var audio_toggle = document.querySelector('.audio-on');
 //                 video_toggle.onclick = function () {
 //                     stream.getVideoTracks()[0].enabled = !(stream.getVideoTracks()[0].enabled);
+
 //                     var video_toggle_class = document.querySelector('.video-toggle');
 //                     if (video_toggle_class.innerText == 'videocam') {
 //                         video_toggle_class.innerText = 'videocam_off';
@@ -239,30 +271,39 @@ var connection = new WebSocket('ws://localhost:9090');
 //                         video_toggle_class.innerText = 'videocam';
 //                     }
 //                 }
+
 //                 audio_toggle.onclick = function () {
 //                     stream.getAudioTracks()[0].enabled = !(stream.getAudioTracks()[0].enabled);
+
 //                     var audio_toggle_class = document.querySelector('.audio-toggle');
 //                     if (video_toggle_class.innerText == 'mic') {
 //                         video_toggle_class.innerText = 'mic_off';
 //                     } else {
 //                         video_toggle_class.innerText = 'mic';
 //                     }
+
 //                 }
 //                 hangup();
+
 //             }
+
 //             myConn.onicecandidate = function (event) {
 //                 if (event.candidate) {
 //                     send({
 //                         type: "candidate",
 //                         candidate: event.candidate
+
 //                     })
 //                 }
 //             }
+
 //         }, function (error) {
 //             console.log(error);
 //         });
+
 //     }
 // }
+
 // function offerProcess(offer, name) {
 //     connected_user = name;
 //     myConn.setRemoteDescription(new RTCSessionDescription(offer))
@@ -277,32 +318,40 @@ var connection = new WebSocket('ws://localhost:9090');
 //     }, function (error) {
 //         alert("Answer has not created");
 //     })
+
 // }
+
 // function answerProcess(answer) {
 //     myConn.setRemoteDescription(new RTCSessionDescription(answer));
 // }
+
 // function candidateProcess(candidate) {
 //     myConn.addIceCandidate(new RTCIceCandidate(candidate))
 // }
+
 // function rejectedCall(rejected_caller_or_callee) {
 //     send({
 //         type: "reject",
 //         name: rejected_caller_or_callee
 //     })
 // }
+
 // function acceptCall(callee_name) {
 //     send({
 //         type: "accept",
 //         name: callee_name
 //     })
 // }
+
 // function rejectProcess() {
 //     call_status.innerHTML = '';
 // }
+
 // function acceptProcess() {
 //     call_status.innerHTML = '';
 //     recordButton.disabled = false;
 // }
+
 // function hangup() {
 //     var call_cancel = document.querySelector('.call-cancel');
 //     call_cancel.addEventListener("click", function () {
@@ -311,8 +360,10 @@ var connection = new WebSocket('ws://localhost:9090');
 //             type: "leave"
 //         })
 //         leaveProcess();
+
 //     })
 // }
+
 // function leaveProcess() {
 //     remote_video.src = null;
 //     myConn.close();
